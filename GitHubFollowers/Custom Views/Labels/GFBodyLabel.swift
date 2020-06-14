@@ -14,20 +14,21 @@ class GFBodyLabel: UILabel {
         super.init(frame: frame)
         configure()
     }
-      
-    required init?(coder: NSCoder) { fatalError("This initializer requires a storyboard") }
     
-    init(textAlignment: NSTextAlignment) {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(textAlignment: NSTextAlignment) {
         // Note that we want our body label to support dynamic type
-        super.init(frame: .zero)
-        
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
-        configure()
     }
 
     private func configure() {
         textColor = .secondaryLabel
-        font = UIFont.preferredFont(forTextStyle: .body)
+        font = UIFont.preferredFont(forTextStyle: .body)  // Dynamic type
+        adjustsFontForContentSizeCategory = true // Dynamic type on
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.75  // 75%
         lineBreakMode = .byWordWrapping

@@ -25,21 +25,17 @@ class GFTextField: UITextField {
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemGray4.cgColor
         
-        textColor = .label
-        tintColor = .label  // The cursor
-        textAlignment = .center
+        textColor                   = .label
+        tintColor                   = .label
+        textAlignment               = .center
+        font                        = UIFont.preferredFont(forTextStyle: .title2)
+        adjustsFontSizeToFitWidth   = true
+        minimumFontSize             = 12
         
-        font = UIFont.preferredFont(forTextStyle: .title2)
-        adjustsFontSizeToFitWidth = true  // Shrink font size if required to fit all text into field
-        minimumFontSize = 12  // Don't shrink too much!
-
-        backgroundColor = .tertiarySystemBackground
-        autocorrectionType = .no
-        placeholder = "Enter a username"
-        
-        // Configure what the Return key does for the username text field
-        returnKeyType = .go  // The return key for the keyboard belonging to this text field will display "Go"
-        
-        // We now need to set up a UITextFieldDelegate in our SearchVC
+        backgroundColor             = .tertiarySystemBackground
+        autocorrectionType          = .no
+        returnKeyType               = .go
+        clearButtonMode             = .whileEditing
+        placeholder                 = "Enter a username"
     }
 }

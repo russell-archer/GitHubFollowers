@@ -14,15 +14,17 @@ class GFSecondaryTitleLabel: UILabel {
         super.init(frame: frame)
         configure()
     }
-      
-    required init?(coder: NSCoder) { fatalError("This initializer requires a storyboard") }
     
-    init(fontSize: CGFloat) {
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(fontSize: CGFloat) {
         // Note that we want our body label to support dynamic type
-        super.init(frame: .zero)
+        self.init(frame: .zero)
         
         font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
-        configure()
     }
 
     private func configure() {

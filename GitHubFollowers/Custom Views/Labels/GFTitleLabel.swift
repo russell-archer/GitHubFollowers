@@ -14,26 +14,24 @@ class GFTitleLabel: UILabel {
         super.init(frame: frame)
         configure()
     }
-      
-    required init?(coder: NSCoder) { fatalError("This initializer requires a storyboard") }
     
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
-        // Note that we do NOT want to use dynamic type for a title label, hence
-        // we allow setting the font size
-        
-        super.init(frame: .zero)
-        
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        
-        configure()
     }
 
     private func configure() {
-        textColor = .label
-        adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.9  // 90%
-        lineBreakMode = .byTruncatingTail  // Causes text that's too long to be truncated with "..."
+        textColor                   = .label
+        adjustsFontSizeToFitWidth   = true
+        minimumScaleFactor          = 0.9
+        lineBreakMode               = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

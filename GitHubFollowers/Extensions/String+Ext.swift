@@ -9,10 +9,9 @@
 import Foundation
 
 extension String {
-    
     func convertToDate() -> Date? {
         let dateFormatter = DateFormatter()  // See https://nsdateformatter.com for help with formats
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"  // This is the format we get back from the GitHub API
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"  // This is the format (ISO8601) we get back from the GitHub API
         dateFormatter.locale = .current
         dateFormatter.timeZone = .current
         

@@ -12,44 +12,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        
-        guard let windowScene = (scene as? UIWindowScene) else { return }  // Get the window scene
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)  // Create a window
-        guard window != nil else { return }
-        
-        window?.windowScene = windowScene  // Assign the window scene to the window's window scene
-        window?.rootViewController = createTabBar() // Set the root view controller 
-        window?.makeKeyAndVisible()  // Make the window visible
-    }
-    
-    func createTabBar() -> UITabBarController {
-        // Create the tab bar controller and populate with an array of view controllers (the nav controllers)
-        let tabbar = UITabBarController()
-        
-        UITabBar.appearance().tintColor = .systemGreen  // Set the global color for tab bars
-        configureNavigationBar()  // Set the global color for nav    bars
-        
-        tabbar.viewControllers = [createSearchNavigationController(), createFavoritesNavigationController()]
-        
-        return tabbar
-    }
 
-    func createSearchNavigationController() -> UINavigationController {
-        let searchVC = SearchVC()
-        searchVC.title = "Search"
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        return UINavigationController(rootViewController: searchVC)
-    }
-    
-    func createFavoritesNavigationController() -> UINavigationController {
-        let favVC = FavoritesListVC()
-        favVC.title = "Favorites"
-        favVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        window                      = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene         = windowScene
+        window?.rootViewController  = GFTabBarController()
+        window?.makeKeyAndVisible()
         
-        return UINavigationController(rootViewController: favVC)
+        configureNavigationBar()
     }
     
     func configureNavigationBar() {
